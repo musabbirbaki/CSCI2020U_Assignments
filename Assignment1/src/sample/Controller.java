@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -20,19 +21,15 @@ public class Controller implements Initializable {
     private String dataDirectory;
 
     //declare table veiew
-    @FXML
-    private TableView<TestFile> tableView;
+    @FXML private TableView<TestFile> tableView;
 
     //declare columns
-    @FXML
-    private TableColumn<TestFile, String> filenameColumn;
-    @FXML
-    private TableColumn<TestFile, Double> spamProbabilityColumn;
-    @FXML
-    private TableColumn<TestFile, String> actualClassColumn;
+    @FXML private TableColumn<TestFile, String> filenameColumn;
+    @FXML private TableColumn<TestFile, Double> spamProbabilityColumn;
+    @FXML private TableColumn<TestFile, String> actualClassColumn;
 
-    //@FXML private Accuracy;
-    //@FXML private Precision;
+    @FXML private TextField Accuracy;
+    @FXML private TextField Precision;
 
 
     @Override
@@ -69,6 +66,9 @@ public class Controller implements Initializable {
 
         //ObservableList<TestFile> getAllFiles = DataSource.getAllFiles(tFilesHam,tFilesSpam);
         showData(tFilesHam,tFilesSpam);
+
+        this.Accuracy.setText(accuracy + "");
+        this.Precision.setText(precision + "");
 
         System.out.println("Accuracy: " + accuracy);
         System.out.println("Precision: " + precision);

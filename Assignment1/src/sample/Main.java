@@ -18,7 +18,7 @@ public class Main extends Application {
         controller.setStage(primaryStage);
 
         primaryStage.setTitle("Spam or Ham");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 600, 500));
 
         primaryStage.show();
     }
