@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="200.0" prefWidth="474.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" maxHeight="700.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <TableView fx:id="tableView" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+      <TableView fx:id="tableView">
         <columns>
-          <TableColumn fx:id="filenameColumn" editable="false" minWidth="100.0" prefWidth="-1.0" text="File" />
+          <TableColumn fx:id="filenameColumn" editable="false" minWidth="340.0" prefWidth="-1.0" text="File" />
           <TableColumn fx:id="actualClassColumn" editable="false" minWidth="100.0" prefWidth="100.0" text="Actual Class" />
             <TableColumn fx:id="spamProbabilityColumn" editable="false" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="-1.0" text="Spam Probability" />
         </columns>
@@ -41,17 +41,11 @@
             <TextField fx:id="Precision" disable="true" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></TextField>
+               </opaqueInsets></TextField>
             <TextField fx:id="Accuracy" disable="true" editable="false" layoutX="247.0" layoutY="10.0" GridPane.columnIndex="1">
                <opaqueInsets>
                   <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></TextField>
+               </opaqueInsets></TextField>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -59,10 +53,10 @@
       </GridPane>
    </children>
    <columnConstraints>
-      <ColumnConstraints />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="172.0" minHeight="140.0" prefHeight="140.0" />
-      <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" />
+      <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+      <RowConstraints />
    </rowConstraints>
 </GridPane>

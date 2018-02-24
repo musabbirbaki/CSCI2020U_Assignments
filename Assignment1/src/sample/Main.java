@@ -17,8 +17,11 @@ public class Main extends Application {
         Controller controller = (Controller) loader.getController();
         controller.setStage(primaryStage);
 
+        Scene scene = new Scene(root, 600, 600);
+
         primaryStage.setTitle("Spam or Ham");
-        primaryStage.setScene(new Scene(root, 600, 500));
+
+        primaryStage.setScene(scene);
 
         primaryStage.show();
     }
