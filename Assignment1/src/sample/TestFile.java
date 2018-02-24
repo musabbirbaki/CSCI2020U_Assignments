@@ -1,46 +1,49 @@
 package sample;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.text.DecimalFormat;
 
 public class TestFile {
-    private String filename;
-    private double spamProbability;
-    private String actualClass;
+    private SimpleStringProperty filename;
+    private SimpleDoubleProperty spamProbability;
+    private SimpleStringProperty actualClass;
 
     public TestFile(String filename,
                     double spamProbability,
                     String actualClass){
-        this.filename = filename;
-        this.spamProbability = spamProbability;
-        this.actualClass = actualClass;
+        this.filename = new SimpleStringProperty(filename);
+        this.spamProbability = new SimpleDoubleProperty(spamProbability);
+        this.actualClass = new SimpleStringProperty(actualClass);
     }
 
     public String getFilename(){
-        return this.filename;
+        return this.filename.get();
     }
 
     public double getSpamProbability(){
-        return this.spamProbability;
+        return this.spamProbability.get();
     }
 
     public String getSpamProbRounded(){
         DecimalFormat df = new DecimalFormat("0.00000");
-        return df.format(this.spamProbability);
+        return df.format(this.spamProbability.get());
     }
 
     public String getActualClass() {
-        return actualClass;
+        return actualClass.get();
     }
 
     public void setFilename(String value){
-        this.filename = value;
+        this.filename = new SimpleStringProperty(value);
     }
 
     public void setSpamProbability(double val){
-        this.spamProbability = val;
+        this.spamProbability = new SimpleDoubleProperty(val);
     }
 
     public void setActualClass(String value){
-        this.actualClass = value;
+        this.actualClass = new SimpleStringProperty(value);
     }
 }
