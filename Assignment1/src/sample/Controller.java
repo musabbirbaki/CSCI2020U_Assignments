@@ -27,7 +27,8 @@ public class Controller implements Initializable {
 
     //declare columns
     @FXML private TableColumn<TestFile, String> filenameColumn;
-    @FXML private TableColumn<TestFile, Double> spamProbabilityColumn;
+    //@FXML private TableColumn<TestFile, Double> spamProbabilityColumn;
+    @FXML private TableColumn<TestFile, String> spamProbabilityColumn;
     @FXML private TableColumn<TestFile, String> actualClassColumn;
 
     @FXML private TextField Accuracy;
@@ -155,8 +156,10 @@ public class Controller implements Initializable {
      */
     private void showData(ArrayList<TestFile> tFilesHam, ArrayList<TestFile> tFilesSpam) {
         filenameColumn.setCellValueFactory(new PropertyValueFactory<TestFile, String>("filename"));
-        spamProbabilityColumn.setCellValueFactory(new PropertyValueFactory<TestFile, Double>("spamProbability"));
+        //spamProbabilityColumn.setCellValueFactory(new PropertyValueFactory<TestFile, Double>("spamProbability"));
         actualClassColumn.setCellValueFactory(new PropertyValueFactory<TestFile, String>("actualClass"));
+        spamProbabilityColumn.setCellValueFactory(new PropertyValueFactory<TestFile, String>("spamProbability"));
+
 
         tableView.setItems(DataSource.getAllFiles(tFilesHam, tFilesSpam));
     }

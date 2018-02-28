@@ -22,7 +22,17 @@ public class TestFile {
         return this.filename.get();
     }
 
-    public double getSpamProbability(){
+//    public double getSpamProbability(){
+//        //return this.spamProbability.get();
+//    }
+
+    //This function returns the rounded string version tableview to be readable.
+    public String getSpamProbability(){
+        //return this.spamProbability.get();
+        return getSpamProbRounded();
+    }
+
+    public double getSpamProbabilityNotRounded(){
         return this.spamProbability.get();
     }
 

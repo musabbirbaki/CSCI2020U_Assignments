@@ -19,7 +19,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, 600, 600);
 
-        primaryStage.setTitle("Spam or Ham");
+        primaryStage.setTitle("MayHam3000");
 
         primaryStage.setScene(scene);
 

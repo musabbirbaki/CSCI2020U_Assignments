@@ -95,7 +95,7 @@ public class Test {
 
         for(TestFile t: this.tFilesSpam){
             //calculate numTruePositives
-            if(t.getSpamProbability() > 0.6){
+            if(t.getSpamProbabilityNotRounded() > 0.6){
                 numTruePositives++;
             }else{
                 numFalsePositives++;
@@ -104,7 +104,7 @@ public class Test {
 
         for(TestFile t: this.tFilesHam){
             //calculate numTruePositives
-            if(t.getSpamProbability() < 0.6){
+            if(t.getSpamProbabilityNotRounded() < 0.6){
                 numTruePositives++;
             }else{
                 numTrueNegatives++;
