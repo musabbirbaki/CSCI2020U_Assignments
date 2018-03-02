@@ -24,7 +24,7 @@ public class TestFile {
     }
 
 //    public double getSpamProbability(){
-//        //return this.spamProbability.get();
+//        return this.spamProbability.get();
 //    }
 
     //This function returns the rounded string version tableview to be readable.

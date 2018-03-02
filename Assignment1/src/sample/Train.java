@@ -46,14 +46,23 @@ public class Train {
 
             Map<String,Integer> temp = trainSpamWordCounter.getWordCounts();
             for(String key: temp.keySet()){
-                trainSpamWordCounts.put(key, temp.get(key));
+                //if key exists just add the temp.get(key)
+                if(trainSpamWordCounts.containsKey(key)){
+                    trainSpamWordCounts.put(key, trainSpamWordCounts.get(key) + temp.get(key));
+                }else{
+                    //else put new key
+                    trainSpamWordCounts.put(key, temp.get(key));
+                }
             }
             numberOfTrainSpamFiles += trainSpamWordCounter.getNumberOfFiles();
         }
         System.out.println("Read Total of " + numberOfTrainSpamFiles + " number of Spam Files.");
         System.out.println("Training Spam Files read successfully.\n");
 
-
+        /*
+        This data structure holds a word as a key, the value is an array list with two elements
+        example, (key: word, values: Word | Spam Probability, Word | Ham Probability)
+        */
         Map<String, ArrayList<Double>> probSpamHam = new TreeMap<>();
 
         //calculate the probability of Word such that file is Spam (pWS)
@@ -79,7 +88,14 @@ public class Train {
 
             Map<String,Integer> temp = trainHamWordCounter.getWordCounts();
             for(String key: temp.keySet()){
-                trainHamWordCounts.put(key, temp.get(key));
+
+                //if key exists just add the temp.get(key)
+                if(trainHamWordCounts.containsKey(key)){
+                    trainHamWordCounts.put(key, trainHamWordCounts.get(key) + temp.get(key));
+                }else {
+                    //else put new key
+                    trainHamWordCounts.put(key, temp.get(key));
+                }
             }
             numberOfTrainHamFiles += trainHamWordCounter.getNumberOfFiles();
         }
@@ -95,8 +111,6 @@ public class Train {
         }
 
         //Calculate the probability of Spam such that a word is given (pSW)
-        //this calculation uses the Map(word, [probability spam, probability ham]) data
-        //  word  , probability
         Map<String, Double> probSgivenWord = new TreeMap<>();//final set that is needed
         double pSW;
         for(String word: probSpamHam.keySet()){

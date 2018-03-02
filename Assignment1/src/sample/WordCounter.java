@@ -37,18 +37,10 @@ public class WordCounter {
         //loops through the number of files
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {//if file is a file and not a directory
-
-                //System.out.println("File " + listOfFiles[i].getName());
-
                 String filePathName = listOfFiles[i].getName();
-                //System.out.println("File " + filePathName);
 
                 try {
 
-                    //File infile = new File(filePathName);
-                    //fileExists = infile.exists();
-
-                    //Scanner scanner = new Scanner(infile);
                     Scanner scanner = new Scanner(listOfFiles[i]);
                     while(scanner.hasNext()){
                         String nextWord = scanner.next();
@@ -57,20 +49,11 @@ public class WordCounter {
                         //words.add(nextWord);
                     }
                 }catch(Exception e){
-
                     System.out.println("Failed to Open File: " + filePathName);
                     counter++;
-                    //if(fileExists == false){
-                    //System.out.println("File doesn't Exist in " + filePathName);
-                    //}
-
                 }
-
-
             }
         }
-
-        //System.out.println("Number of files couldn't open " + counter);
     }
 
     public Map<String,Integer> getWordCounts(){
