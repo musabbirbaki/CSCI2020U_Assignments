@@ -3,6 +3,13 @@ package sample;
 import java.io.File;
 import java.util.*;
 
+/**
+ * This class has one main function
+ *
+ * countWords(String directory): this function takes a directory and counts
+ * all the unique words in each file in that folder and saves it in the wordCounts
+ * Map attribute.
+ * */
 public class WordCounter {
 
     protected Map<String,Integer> wordCounts;
@@ -23,7 +30,7 @@ public class WordCounter {
         File[] listOfFiles = folder.listFiles();
 
         this.numberOfFiles = listOfFiles.length;
-        System.out.println("Reading " + numberOfFiles + " files.");
+        System.out.println("Reading " + numberOfFiles + " files from: " + directory);
 
         int counter = 0;
 

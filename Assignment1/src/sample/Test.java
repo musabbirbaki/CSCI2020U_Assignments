@@ -36,7 +36,7 @@ public class Test {
      * is given probability and runs the test.
      * */
     public void runTest(){
-        System.out.println("------Running Testing----------");
+        System.out.println("----------Running Testing----------");
 
 
         //testing files from spam directory

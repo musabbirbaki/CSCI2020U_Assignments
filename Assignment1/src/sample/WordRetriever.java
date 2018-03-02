@@ -1,11 +1,22 @@
 package sample;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+
+/**
+ * This class has two main functions:
+ *
+ * getWordsFromFile(File infile): takes in a file parameter and
+ * returns a Set of strings which are the unique words contained
+ * int the file infile.
+ *
+ * getFilesFromDirectory(String directory): function takes in
+ * a directory name as a parametor. This method returns an
+ * array of files that are contained in that directory.
+ * */
 public class WordRetriever {
 
     /**

@@ -37,7 +37,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Starting...........");
+        System.out.println("Starting Program\nWaiting for User to select Data directory.");
         String trainFolderDirectory;
         String testFolderDirectory;
 
@@ -46,7 +46,7 @@ public class Controller implements Initializable {
         //user will select the folder which contains the train and test folder
         //String dataDirectory = getDataDirectory();
         setDataDirectory();
-        System.out.println("Starting with: " + this.dataDirectory);
+        System.out.println("Chosen directory: " + this.dataDirectory);
 
         //get Train folder directory
         trainFolderDirectory = dataDirectory + "/train";
@@ -73,9 +73,7 @@ public class Controller implements Initializable {
         this.Accuracy.setText(accuracy + "");
         this.Precision.setText(precision + "");
 
-        //System.out.println("Accuracy: " + accuracy);
-        //System.out.println("Precision: " + precision);
-        System.out.println("Completed.....\n");
+        System.out.println("Completed Testing\nShowing Results.\n");
         //System.exit(0);
 
 
@@ -133,22 +131,8 @@ public class Controller implements Initializable {
             System.out.println(e);
             setDataDirectory();
         }
-        //////////////////////////////////
-//        Label label = new Label();
-//        label.setText("sdfsdfsd");
-//        Insets inset = new Insets(10,10,10,10);
-//        label.setPadding(inset);
-//
-//        VBox layout = new VBox(10);
-//        layout.getChildren().addAll(label);
-//        layout.setAlignment(Pos.CENTER);
-//
-//        //Display window and wait for it to be closed before returning
-//        Scene scene = new Scene(layout);
-//        this.stage.setScene(scene);
-        ////////////////////////////////////
 
-        System.out.println("Trying: " + dataDirectory);
+        System.out.println("Trying Chosen directory: " + dataDirectory);
     }
 
     /**

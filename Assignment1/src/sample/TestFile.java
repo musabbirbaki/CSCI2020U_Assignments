@@ -9,6 +9,7 @@ public class TestFile {
     private SimpleStringProperty filename;
     private SimpleDoubleProperty spamProbability;
     private SimpleStringProperty actualClass;
+    private SimpleStringProperty spamProbabilityRounded;
 
     public TestFile(String filename,
                     double spamProbability,
