@@ -112,16 +112,13 @@ public class Test {
             }
         }
 
-        System.out.println(numFalseNegatives + numFalsePositives + " : WRONG");
-        System.out.println(numTrueNegatives + numTruePositives + " : CORRECT");
+        System.out.println("Number of Ham Files Tested: "+this.tFilesHam.size());
+        System.out.println("Number of Spam Files Tested: "+this.tFilesSpam.size());
+        System.out.println("Wrong Guess: " +( numFalseNegatives + numFalsePositives));
+        System.out.println("Correct Guess: " + (numTrueNegatives + numTruePositives));
 
-        System.out.println(this.tFilesHam.size() + " : Number of Ham Files");
-        System.out.println(this.tFilesSpam.size() + " : Number of Spam Files");
-
-        this.Accuracy = ((double) numTruePositives + (double) numTrueNegatives)/((double) numTruePositives + (double) numTrueNegatives + (double) numFalsePositives + (double)numFalseNegatives);
-        this.Precision = ((double) numTruePositives)/((double) numTruePositives + (double) numFalsePositives);
-        //this.Accuracy = ((double)numTruePositives + (double)numTrueNegatives)/(double)numFiles;
-        //this.Precision = (double)numTruePositives / ((double)numFalsePositives + (double)numTruePositives);
+        this.Accuracy = ((double)numTruePositives + (double)numTrueNegatives)/(double)numFiles;
+        this.Precision = (double)numTruePositives / ((double)numFalsePositives + (double)numTruePositives);
     }
 
     public double getAccuracy() {
