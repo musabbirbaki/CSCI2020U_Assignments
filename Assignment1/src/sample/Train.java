@@ -1,6 +1,5 @@
 package sample;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -28,17 +27,13 @@ public class Train {
 
 
         System.out.println("\nStarting Training.");
-        //Ask user for file directory, ex given in listing 2
-        //user will select the folder which contains the train and test folder
-        //This variable will hold the word and [probability of spam, and probability of being ham]
-        //collect data from train spam data
 
         //spam word mapping process below
         Map<String,Integer> trainSpamWordCounts = new TreeMap<>();
         int numberOfTrainSpamFiles = 0;
-
         Map<String,Integer> trainHamWordCounts = new TreeMap<>();
         int numberOfTrainHamFiles = 0;
+
 
         //For every spam folder read the files and Populate the trainSpamWordsCounts map
         for (String name: spamFolders){
@@ -48,6 +43,7 @@ public class Train {
             trainSpamWordCounter.countWords(trainSpam);
 
             Map<String,Integer> temp = trainSpamWordCounter.getWordCounts();
+
             for(String key: temp.keySet()){
                 //if key exists just add the temp.get(key)
                 if(trainSpamWordCounts.containsKey(key)){
@@ -67,6 +63,7 @@ public class Train {
         System.out.println("Read Total of " + numberOfTrainSpamFiles + " number of Spam Files.");
         System.out.println("Training Spam Files read successfully.\n");
 
+
         //For every spam folder read the files and Populate the trainSpamWordsCounts map
         for (String name: hamFolders){
             String trainHam = trainFolderDirectory + "/" + name;
@@ -74,6 +71,7 @@ public class Train {
             trainHamWordCounter.countWords(trainHam);
 
             Map<String,Integer> temp = trainHamWordCounter.getWordCounts();
+
             for(String key: temp.keySet()){
 
                 //if key exists just add the temp.get(key)
@@ -121,23 +119,16 @@ public class Train {
         }
 
 
-        //int testcounter =0;
         //Calculate the probability of Spam such that a word is given (pSW)
         Map<String, Double> probSgivenWord = new TreeMap<>();//final set that is needed
         double pSW;
         for(String word: probSpamHam.keySet()){
 
             if(probSpamHam.get(word).get(0) !=0 && probSpamHam.get(word).get(1) !=0) {
-                //testcounter++;
                 pSW = probSpamHam.get(word).get(0) / (probSpamHam.get(word).get(0) + probSpamHam.get(word).get(1));
                 probSgivenWord.put(word, pSW);
-                //System.out.println("word: " + "\t" + probSpamHam.get(word).get(0) + "\t" + probSpamHam.get(word).get(1));
             }
-
-//            pSW = probSpamHam.get(word).get(0) / (probSpamHam.get(word).get(0) + probSpamHam.get(word).get(1));
-//            probSgivenWord.put(word, pSW);
         }
-        //System.out.println(testcounter+" asdfasdfasdfasfsd");
 
         return probSgivenWord;
     }

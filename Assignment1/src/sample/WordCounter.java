@@ -73,5 +73,28 @@ public class WordCounter {
         }
     }
 
+//    protected void countWord(String word) {
+//        if(isWord(word)) {
+//            if (wordCounts.containsKey(word)) {
+//                int oldCount = wordCounts.get(word);
+//                wordCounts.put(word, oldCount + 1);
+//            } else {
+//                wordCounts.put(word, 1);
+//            }
+//        }
+//    }
+
+    private boolean isWord(String word) {
+        String pattern = "^[a-zA-Z]+$";
+        if (word.matches(pattern)) {
+            return true;
+        } else {
+            return false;
+        }
+
+        // also fine:
+        //return word.matches(pattern);
+    }
+
 
 }

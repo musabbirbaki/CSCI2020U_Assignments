@@ -9,6 +9,7 @@ public class Test {
 
     private double Accuracy;
     private double Precision;
+    private double Threshold;
     private ArrayList<TestFile> tFilesSpam;
     private ArrayList<TestFile> tFilesHam;
 
@@ -17,7 +18,7 @@ public class Test {
     private Map<String, Double> probSgivenWord;
 
 
-    public Test(String testFolderDirectory, Map<String, Double> probSgivenWord){
+    public Test(String testFolderDirectory, Map<String, Double> probSgivenWord, double threshold){
 
         //initializing final array list of TestFiles
         this.tFilesSpam = new ArrayList<>();
@@ -25,6 +26,7 @@ public class Test {
 
         this.Accuracy = 0.0;
         this.Precision = 0.0;
+        this.Threshold = threshold;
 
         this.testSpam = testFolderDirectory + "/spam";
         this.testHam = testFolderDirectory + "/ham";
@@ -81,22 +83,22 @@ public class Test {
         }
 
         //calculate accuracy and precision
-        calculatePrecisionAccuracy();
+        calculatePrecisionAccuracy(this.Threshold); //threshold 0.7 seems to give best results
     }
 
     /**
      * This function calculates the precision and accurcy using the tFilesSpam and tFilesHam
      * */
-    private void calculatePrecisionAccuracy(){
+    private void calculatePrecisionAccuracy(double threshold){
         int numTruePositives = 0; //Spam and got probability = 1, or Not spam got prob = 0
         int numTrueNegatives = 0;
         int numFalsePositives = 0;
         int numFalseNegatives = 0;
         int numFiles = this.tFilesSpam.size() + this.tFilesHam.size();
 
+
         for(TestFile t: this.tFilesSpam){
-            //calculate numTruePositives
-            if(t.getSpamProbabilityNotRounded() > 0.6){
+            if(t.getSpamProbabilityNotRounded() >= threshold){
                 numTruePositives++;
             }else{
                 numFalsePositives++;
@@ -104,18 +106,22 @@ public class Test {
         }
 
         for(TestFile t: this.tFilesHam){
-            //calculate numTruePositives
-            if(t.getSpamProbabilityNotRounded() < 0.6){
+            if(t.getSpamProbabilityNotRounded() < threshold){
                 numTrueNegatives++;
             }else{
                 numFalseNegatives++;
             }
         }
 
-        System.out.println("Number of Ham Files Tested: "+this.tFilesHam.size());
-        System.out.println("Number of Spam Files Tested: "+this.tFilesSpam.size());
-        System.out.println("Wrong Guess: " +( numFalseNegatives + numFalsePositives));
+        System.out.println("Number of Ham Files Tested: " + this.tFilesHam.size());
+        System.out.println("Number of Spam Files Tested: " + this.tFilesSpam.size());
+        System.out.println("Threshold: " + this.Threshold);
+        System.out.println("Wrong Guess: " + (numFalseNegatives + numFalsePositives));
         System.out.println("Correct Guess: " + (numTrueNegatives + numTruePositives));
+        System.out.println("-----------------");
+        System.out.println("TP:" + numTruePositives + "\t\tFP:" + numFalsePositives);
+        System.out.println("TN:" + numTrueNegatives + "\t\tFN:" + numFalseNegatives);
+        System.out.println("-----------------");
 
         this.Accuracy = ((double)numTruePositives + (double)numTrueNegatives)/(double)numFiles;
         this.Precision = (double)numTruePositives / ((double)numFalsePositives + (double)numTruePositives);

@@ -7,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -41,27 +40,26 @@ public class Controller implements Initializable {
         String trainFolderDirectory;
         String testFolderDirectory;
 
-
-        //Ask user for file directory, ex given in listing 2
         //user will select the folder which contains the train and test folder
-        //String dataDirectory = getDataDirectory();
         setDataDirectory();
         System.out.println("Chosen directory: " + this.dataDirectory);
 
         //get Train folder directory
         trainFolderDirectory = dataDirectory + "/train";
-        //trainFolderDirectory = "/home/musabbir/Documents/CSCI2020TestData/data/train";
 
         //get Test folder directory
         testFolderDirectory = dataDirectory + "/test";
-        //testFolderDirectory = "/home/musabbir/Documents/CSCI2020TestData/data/test";
 
         //run train on Train Directory
+        //can read multiple ham and spam folders
         Map<String, Double> probSgivenWord = Train.runTrain(trainFolderDirectory);
 
-
-        Test test = new Test(testFolderDirectory, probSgivenWord);
+        //run test on Test Directory
+        //only reads one folder for spam and ham each
+        //Threshold: 0.7 means a file is only considered spam if the spam probability is greater than 0.7
+        Test test = new Test(testFolderDirectory, probSgivenWord, 0.7);
         test.runTest();
+
         ArrayList<TestFile> tFilesHam = test.gettFilesHam();
         ArrayList<TestFile> tFilesSpam = test.gettFilesSpam();
         double accuracy = test.getAccuracy();
