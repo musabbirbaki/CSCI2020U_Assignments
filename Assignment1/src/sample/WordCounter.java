@@ -38,15 +38,17 @@ public class WordCounter {
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {//if file is a file and not a directory
                 String filePathName = listOfFiles[i].getName();
-
+                Set<String> words = new TreeSet<>();
                 try {
 
                     Scanner scanner = new Scanner(listOfFiles[i]);
                     while(scanner.hasNext()){
                         String nextWord = scanner.next();
                         //each word in a file
-                        countWord(nextWord);
-                        //words.add(nextWord);
+                        if(!words.contains(nextWord)){
+                            countWord(nextWord);
+                            words.add(nextWord);
+                        }
                     }
                 }catch(Exception e){
                     System.out.println("Failed to Open File: " + filePathName);
