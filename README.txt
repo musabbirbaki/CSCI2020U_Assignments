@@ -1,7 +1,9 @@
 Author: Musabbir Ahmed Baki
 
 To run the program, copy each line below and paste it in the terminal. Note
-that each line is a separate command.
+that each line is a separate command. Alternatively the project can also be
+imported in to Intellij and executed from there, in that case these commands
+won't be neccessary.
 
 ----------------------------Setup Commands---------------------------------
 git clone https://github.com/musabbirbaki/CSCI2020U_Assignments.git
